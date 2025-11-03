@@ -4,12 +4,6 @@
 
 using namespace std;
 
-string getDateTime() {
-    time_t timestamp;
-    time(&timestamp);
-    return { (ctime(&timestamp)) };
-}
-
 enum Product_Type {
     drink,
     dessert,
@@ -99,8 +93,8 @@ class Client {
         return *this;
     }
 
-    int getClientPoints() const {
-        return this->points;
+    void addPoints(const int points) {
+        this->points += points;
     }
 
     friend ostream& operator<<(ostream& os, const Client& client) {
@@ -114,16 +108,24 @@ class Client {
 };
 
 class Order {
-    int id;
+    int id{};
     vector<Product> products;
     string date;
-    float price;
+    float price{};
     Client client;
+
 public:
+
+    static string getDateTime() {
+        time_t timestamp;
+        time(&timestamp);
+        return { (ctime(&timestamp)) };
+    }
 
     Order() = default;
 
-    Order(int id, vector<Product> products, const Client& client) : price(0){
+    Order(const int id, const vector<Product>& products, const Client& client){
+        this->id = id;
         this->date = getDateTime();
         this->products = products;
         this->client = client;
@@ -132,29 +134,9 @@ public:
         }
     }
 
-    void addProduct(const Product& product) {
+    void addProductinOrder(const Product& product) {
         this->products.push_back(product);
-    }
-
-    void showProducts() {
-        for (auto & product : products) {
-            cout << product.getProductName() << " " << product.getProductPrice() << endl;
-        }
-    }
-
-    float getPrice() {
-        for (auto & product : products) {
-            this->price+=product.getProductPrice();
-        }
-        return this->price;
-    }
-
-    void showOrder() {
-        for (auto & product : products) {
-            cout << product.getProductName() << " " << product.getProductPrice() << endl;
-        }
-        cout << this->date;
-        cout << "Total: " << this->price << endl;
+        this->price += product.getProductPrice();
     }
 
     friend ostream& operator<<(ostream& os, const Order& order) {
@@ -175,15 +157,29 @@ public:
 
 
 int main() {
-    Product p1("Espresso",10,drink);
-    Product p2("Cappuccino",12,drink);
-    cout << p1 << " " << p2 << endl;
+
+    const Product p1("Espresso", 10, drink);
+    Product p2,p3;
+    p2.setProductName("Cappuccino");
+    p2.setProductPrice(12);
+    p2.setProductType(drink);
+    cout << p1 << endl << p2.getProductName() << ' ' << p2.getProductPrice() << ' ' << p2.getProductType() << endl;
+    p3=p1;
+    cout << p3 << endl;
+    cout << endl;
+
+    Client c1("Razvan", 243);
+    c1.addPoints(15);
+    cout << c1 << endl;
+
     vector<Product> products;
     products.push_back(p1);
-    products.push_back(p2);
-    Client c("Marcel",1);
-    cout << c << endl;
-    Order order1(1,products,c);
-    cout << order1 << endl;
+    Order o1(554,products,c1);
+    cout << o1 << endl;
+    o1.addProductinOrder(p2);
+    cout << o1 << endl;
+
+
+
     return 0;
 }
