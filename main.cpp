@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <utility>
 #include <vector>
 
 using namespace std;
@@ -66,6 +67,39 @@ class Product {
 
 };
 
+class Drink : public Product {
+    string size;
+    string milkType;
+    bool decaf{};
+    bool extraShot{};
+
+    public:
+
+    Drink() = default;
+
+    Drink(const string& name, const float price, const Product_Type& type, string  size, string  milkType,
+        const bool decaf): Product(name, price, type), size(std::move(size)), milkType(std::move(milkType)),
+        decaf(decaf) {
+    }
+
+    ~Drink() = default;
+
+    [[nodiscard]] float FinalPrice() const {
+        float price = this->getProductPrice();
+        if (this->size == "Medium") price+=3;
+        else if (this->size == "Large") price+=6;
+        if (this->milkType != "Whole" || this-> milkType != "None") {
+            price+=3;
+        }
+        if (this->decaf == true) {
+            price+=2;
+        }
+        if (this->extraShot == true) {
+            price+=3;
+        }
+        return price;
+    }
+};
 
 class Client {
     string name;
