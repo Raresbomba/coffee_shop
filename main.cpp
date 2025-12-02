@@ -12,8 +12,8 @@ enum Product_Type {
 
 class Product {
     string name;
-    float price;
-    Product_Type type;
+    float price{};
+    Product_Type type{};
 
     public:
 
@@ -25,28 +25,28 @@ class Product {
             this->type = type;
         }
 
-        const string& getProductName() const {
+        [[nodiscard]] const string& getProductName() const {
             return this->name;
         }
 
-        const float getProductPrice() const {
+        [[nodiscard]] float getProductPrice() const {
             return this->price;
         }
 
-        const Product_Type getProductType() {
+        [[nodiscard]] Product_Type getProductType() const {
             return this->type;
         }
 
-        void setProductName(const string& name) {
-            this->name = name;
+        void setProductName(const string& setterName) {
+            this->name = setterName;
         }
 
-        void setProductPrice(const float price) {
-            this->price = price;
+        void setProductPrice(const float setterPrice) {
+            this->price = setterPrice;
         }
 
-        void setProductType(const Product_Type& type) {
-            this->type = type;
+        void setProductType(const Product_Type& setterType) {
+            this->type = setterType;
         }
 
         Product(const Product& product) {
@@ -55,12 +55,7 @@ class Product {
             this->type = product.type;
         }
 
-        Product& operator=(const Product& product) {
-            this->name = product.name;
-            this->price = product.price;
-            this->type = product.type;
-            return *this;
-        }
+        Product& operator=(const Product& product) = default;
 
         friend ostream& operator<<(ostream& os, const Product& product) {
             os << product.name << " " << product.price << " " << product.type;
@@ -74,8 +69,8 @@ class Product {
 
 class Client {
     string name;
-    int id;
-    int points;
+    int id{};
+    int points{};
     public:
 
     Client() = default;
@@ -86,15 +81,10 @@ class Client {
         this->points = 0;
     }
 
-    Client& operator=(const Client& client) {
-        this->name = client.name;
-        this->id = client.id;
-        this->points = client.points;
-        return *this;
-    }
+    Client& operator=(const Client& client) = default;
 
-    void addPoints(const int points) {
-        this->points += points;
+    void addPoints(const int addedPoints) {
+        this->points += addedPoints;
     }
 
     friend ostream& operator<<(ostream& os, const Client& client) {
@@ -134,7 +124,7 @@ public:
         }
     }
 
-    void addProductinOrder(const Product& product) {
+    void addProductInOrder(const Product& product) {
         this->products.push_back(product);
         this->price += product.getProductPrice();
     }
@@ -159,12 +149,12 @@ public:
 int main() {
 
     const Product p1("Espresso", 10, drink);
-    Product p2,p3;
+    Product p2;
     p2.setProductName("Cappuccino");
     p2.setProductPrice(12);
     p2.setProductType(drink);
     cout << p1 << endl << p2.getProductName() << ' ' << p2.getProductPrice() << ' ' << p2.getProductType() << endl;
-    p3=p1;
+    const Product& p3 = p1;
     cout << p3 << endl;
     cout << endl;
 
@@ -176,7 +166,7 @@ int main() {
     products.push_back(p1);
     Order o1(554,products,c1);
     cout << o1 << endl;
-    o1.addProductinOrder(p2);
+    o1.addProductInOrder(p2);
     cout << o1 << endl;
 
 
