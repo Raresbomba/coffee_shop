@@ -101,6 +101,39 @@ class Drink : public Product {
     }
 };
 
+class Dessert : public Product {
+    bool hasGluten{};
+    bool hasLactose{};
+    bool isVegan{};
+    vector<string> allergens;
+    bool isFrozen{};
+
+    public:
+
+    Dessert() = default;
+
+    Dessert(const string& name, const float price, const Product_Type& type, const bool hasGluten, const bool hasLactose,
+        const bool isVegan, const vector<string>& allergens, const bool isFrozen)
+        : Product(name, price, type), hasGluten(hasGluten), hasLactose(hasLactose), isVegan(isVegan), allergens(allergens),
+        isFrozen(isFrozen) {}
+
+    ~Dessert() = default;
+
+    void DisplayAllAllergens() const {
+        cout<<"Lista de alergeni: ";
+        if (hasGluten) {
+            cout<<"Gluten, ";
+        }
+        if (hasLactose) {
+            cout<<"Lactoza, ";
+        }
+        for (const string& allergen : allergens) {
+            cout<<allergen<<", ";
+        }
+        cout<<endl;
+    }
+};
+
 class Client {
     string name;
     int id{};
