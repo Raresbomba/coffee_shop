@@ -2,38 +2,9 @@
 #include <ctime>
 #include <vector>
 #include "Product.hpp"
+#include "Client.hpp"
 
 using namespace std;
-
-class Client {
-    string name;
-    int id{};
-    int points{};
-    public:
-
-    Client() = default;
-
-    Client(const string& name, const int id) {
-        this->name = name;
-        this->id = id;
-        this->points = 0;
-    }
-
-    Client& operator=(const Client& client) = default;
-
-    void addPoints(const int addedPoints) {
-        this->points += addedPoints;
-    }
-
-    friend ostream& operator<<(ostream& os, const Client& client) {
-        os << "Id Client: " << client.id << endl;
-        os << "Nume Client: " << client.name << endl;
-        os << "Puncte de fidelitate: " << client.points << endl;
-        return os;
-    }
-
-    ~Client() = default;
-};
 
 class Order {
     int id{};

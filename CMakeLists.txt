@@ -52,6 +52,10 @@ add_executable(${MAIN_EXECUTABLE_NAME}
     main.cpp
         Product.cpp
         Product.hpp
+        Order.cpp
+        Order.hpp
+        Client.cpp
+        Client.hpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )
