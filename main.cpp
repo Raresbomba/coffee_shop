@@ -132,6 +132,60 @@ class Dessert : public Product {
         }
         cout<<endl;
     }
+
+    [[nodiscard]] bool getIsVegan() const {
+        return isVegan;
+    }
+
+    [[nodiscard]] bool getIsFrozen() const {
+        return isFrozen;
+    }
+};
+
+class Sandwich : public Product {
+    vector<string> ingredients;
+    bool isVegan{};
+    vector<string> allergens;
+    bool isFrozen{};
+
+    public:
+
+    Sandwich() = default;
+
+    Sandwich(const string& name, const float price, const Product_Type& type, const vector<string>& ingredients,
+        const bool isVegan, const vector<string>& allergens, const bool isFrozen ) : Product(name, price, type),
+        ingredients(ingredients), isVegan(isVegan), allergens(allergens), isFrozen(isFrozen) {
+    }
+
+    ~Sandwich() = default;
+
+    void DisplayAllAllergens() const {
+        cout<<"Lista de alergeni: ";
+        for (const string& allergen : allergens) {
+            cout<<allergen<<", ";
+        }
+        cout<<endl;
+    }
+
+    [[nodiscard]] bool getIsVegan() const {
+        return isVegan;
+    }
+
+    [[nodiscard]] bool getIsFrozen() const {
+        return isFrozen;
+    }
+
+    void AddIngredient(const string& ingredient) {
+        ingredients.push_back(ingredient);
+    }
+
+    void DeleteIngredient(const string& ingredient) {
+        for (const string& i : ingredients) {
+            if (i == ingredient) {
+                ingredients.erase(ingredients.begin());
+            }
+        }
+    }
 };
 
 class Client {
