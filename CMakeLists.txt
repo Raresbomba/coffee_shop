@@ -56,6 +56,7 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         Order.hpp
         Client.cpp
         Client.hpp
+        Exceptions.hpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

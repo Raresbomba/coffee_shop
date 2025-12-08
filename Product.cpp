@@ -1,9 +1,13 @@
 #include "Product.hpp"
+#include "Exceptions.hpp"
 #include <iostream>
 #include <utility>
 #include <algorithm>
 
-Product::Product(string  name, const float price, const Product_Type& type) : name(std::move(name)), price(price), type(type) {}
+Product::Product(string  name, const float price, const Product_Type& type) : name(std::move(name)), price(price), type(type) {
+    if (this->name.empty()) throw InvalidInputException("Nu a fost specificat numele produsului");
+    if (this->price <= 0) throw InvalidInputException("Pretul produsului nu poate fi negativ");
+}
 
 Product::Product(const Product& product) {
     this->name = product.name;
