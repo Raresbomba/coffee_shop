@@ -21,14 +21,19 @@ int main() {
     prosciutto->DisplayDetails();
     prosciutto2->DisplayDetails();*/
 
-    try {
+    /*try {
         Product* invalid = new Drink("Espresso", 5, drink, "Mic", "None", false, false);
         invalid->DisplayDetails();
     }
 
     catch (exception& e) {
         cerr << e.what() << endl;
-    }
+    }*/
+
+    Product* brazil = new CoffeeBeans("Brazil Blend", 60, coffee_beans, "500g", "Mediu",
+        {"Brazilia"}, {"Caramel", "Zmeura", "Trandafir"});
+
+    brazil->DisplayDetails();
 
     return 0;
 }

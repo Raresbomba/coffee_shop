@@ -170,3 +170,37 @@ void Sandwich::DeleteIngredient(const string& ingredient) {
     }
     return price;
 }
+
+CoffeeBeans::CoffeeBeans(const string &name, const float price, const Product_Type &type, string size, string roastType,
+    const vector<string> &origins, const vector<string> &blend)
+    :Product(name, price, type), size(std::move(size)), roastType(std::move(roastType)), origins(origins), blend(blend){}
+
+Product* CoffeeBeans::clone() const {
+    return new CoffeeBeans(*this);
+}
+
+void swap(CoffeeBeans& first, CoffeeBeans& second) noexcept {
+    using std::swap;
+    swap(static_cast<Product&>(first), second);
+    swap(first.size, second.size);
+    swap(first.roastType, second.roastType);
+    swap(first.origins, second.origins);
+    swap(first.blend, second.blend);
+}
+
+CoffeeBeans& CoffeeBeans::operator=(const CoffeeBeans& other) {
+    CoffeeBeans temp(other);
+    swap(*this, temp);
+    return *this;
+}
+
+[[nodiscard]] float CoffeeBeans::FinalPrice() const {
+    float price = this->getProductPrice();
+    if (size == "500g") price*=2;
+    else if (size == "1kg") price*=3;
+    return price;
+}
+
+
+
+

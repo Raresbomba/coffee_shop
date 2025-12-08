@@ -9,7 +9,8 @@ using namespace std;
 enum Product_Type {
     drink,
     dessert,
-    sandwich
+    sandwich,
+    coffee_beans
 };
 
 class Product {
@@ -230,6 +231,45 @@ class Sandwich final : public Product {
         cout << endl;
     }
 
+};
+
+class CoffeeBeans final : public Product {
+    string size;
+    string roastType;
+    vector<string> origins;
+    vector<string> blend;
+
+    public:
+    CoffeeBeans() = default;
+
+    CoffeeBeans(const string& name, float price, const Product_Type& type, string size, string roastType, const vector<string>& origins, const vector<string>& blend);
+
+    [[nodiscard]] Product* clone() const override;
+
+    CoffeeBeans(const CoffeeBeans& other) = default;
+
+    CoffeeBeans& operator=(const CoffeeBeans& other);
+
+    friend void swap(CoffeeBeans& first, CoffeeBeans& second) noexcept;
+
+    [[nodiscard]] float FinalPrice() const override;
+
+private:
+    void DisplaySpecifics() override {
+        cout << "Tip: Cafea Boabe" << endl;
+        cout << "Marime: " << this->size << endl;
+        cout << "Gradul de prajire: " << this->roastType << endl;
+        cout << "Origini: ";
+        for (string& origin : origins) {
+            cout << origin << ", ";
+        }
+        cout << endl;
+        cout << "Note: ";
+        for (string& bl : blend) {
+            cout << bl << ", ";
+        }
+        cout << endl;
+    }
 };
 
 #endif //OOP_PRODUCT_HPP
