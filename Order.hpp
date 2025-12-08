@@ -11,7 +11,7 @@ using namespace std;
 class Order {
     private:
     int id{};
-    vector<Product> products;
+    vector<Product*> products;
     string date;
     float price{};
     Client client;
@@ -20,7 +20,7 @@ class Order {
 
     Order() = default;
 
-    Order(const int id, const vector<Product>& products, const Client& client);
+    Order(int id, const vector<Product*>& products, const Client& client);
 
     ~Order() = default;
 
