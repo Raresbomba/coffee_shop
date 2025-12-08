@@ -28,6 +28,8 @@ class Order {
 
     void addProductInOrder(const Product& product);
 
+    [[nodiscard]] float CalculateExtraShotTotal() const;
+
     friend ostream& operator<<(ostream& os, const Order& order);
 };
 

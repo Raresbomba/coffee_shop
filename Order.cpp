@@ -28,6 +28,18 @@ void Order::addProductInOrder(const Product& product) {
     this->price += product.getProductPrice();
 }
 
+float Order::CalculateExtraShotTotal() const {
+    float total = 0.0f;
+    for (const auto& productPtr : this->products) {
+        if (const auto* drinkPtr = dynamic_cast<Drink*>(productPtr)) {
+            if (drinkPtr->getExtraShot()) {
+                total += drinkPtr->FinalPrice();
+            }
+        }
+    }
+    return total;
+}
+
 ostream& operator<<(ostream& os, const Order& order) {
     os << "Id Comanda: " << order.id << endl;
     os << "Produse: " << endl;

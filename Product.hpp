@@ -46,6 +46,8 @@ class Product {
 
     friend ostream& operator<<(ostream& os, const Product& product);
 
+    friend void swap(Product& first, Product& second) noexcept;
+
     [[nodiscard]] virtual float FinalPrice() const = 0;
 
     void DisplayDetails() {
@@ -76,9 +78,18 @@ class Drink final : public Product {
     Drink(const string& name, float price, const Product_Type& type, string  size, string  milkType,
         bool decaf, bool extraShot);
 
+    Drink(const Drink& other) = default;
+
+    Drink& operator=(const Drink& other);
+
+    friend void swap(Drink& first, Drink& second) noexcept;
+
+    [[nodiscard]] bool getExtraShot() const {return this->extraShot;}
+
     [[nodiscard]] Product* clone() const override;
 
     [[nodiscard]] float FinalPrice() const override;
+
 
 private:
     void DisplaySpecifics() override {
@@ -118,6 +129,12 @@ class Dessert final : public Product {
 
     void DisplayAllAllergens() const;
 
+    Dessert(const Dessert& other) = default;
+
+    Dessert& operator=(const Dessert& other);
+
+    friend void swap(Dessert& first, Dessert& second) noexcept;
+
     [[nodiscard]] bool getIsVegan() const{return this->isVegan;}
 
     [[nodiscard]] bool getIsFrozen() const{return this->isFrozen;}
@@ -154,7 +171,6 @@ class Dessert final : public Product {
 };
 
 class Sandwich final : public Product {
-    private:
     vector<string> ingredients;
     bool isVegan{};
     vector<string> allergens;
@@ -179,6 +195,12 @@ class Sandwich final : public Product {
     void AddIngredient(const string& ingredient);
 
     void DeleteIngredient(const string& ingredient);
+
+    Sandwich(const Sandwich& other) = default;
+
+    Sandwich& operator=(const Sandwich& other);
+
+    friend void swap(Sandwich& first, Sandwich& second) noexcept;
 
     [[nodiscard]] float FinalPrice() const override;
 

@@ -13,10 +13,12 @@ int main() {
         {"Lactoza", "Gluten"}, false, {"Frisca"});
     Product* prosciutto = new Sandwich("Sandwich Prosciutto", 15, sandwich, {"Focaccia", "Prosciutto", "Mozzarella", "Rosii"},
         false, {"Lactoza", "Gluten"}, false, {"Rucola", "Pesto"});
+    Product* prosciutto2 = prosciutto;
 
     espresso->DisplayDetails();
     pie->DisplayDetails();
     prosciutto->DisplayDetails();
+    prosciutto2->DisplayDetails();
 
     return 0;
 }

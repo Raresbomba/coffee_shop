@@ -1,6 +1,7 @@
 #include "Product.hpp"
 #include <iostream>
 #include <utility>
+#include <algorithm>
 
 Product::Product(string  name, const float price, const Product_Type& type) : name(std::move(name)), price(price), type(type) {}
 
@@ -15,12 +16,33 @@ ostream& operator<<(ostream& os, const Product& product) {
     return os;
 }
 
+void swap(Product& first, Product& second) noexcept {
+    swap(first.name, second.name);
+    swap(first.price, second.price);
+    swap(first.type, second.type);
+}
+
 Drink::Drink(const string& name, const float price, const Product_Type& type, string  size, string  milkType,
 const bool decaf, const bool extraShot) : Product(name, price, type), size(std::move(size)), milkType(std::move(milkType)),
 decaf(decaf), extraShot(extraShot) {}
 
 Product* Drink::clone() const {
     return new Drink(*this);
+}
+
+void swap(Drink& first, Drink& second) noexcept {
+    using std::swap;
+    swap(static_cast<Product&>(first), second);
+    swap(first.size, second.size);
+    swap(first.milkType, second.milkType);
+    swap(first.decaf, second.decaf);
+    swap(first.extraShot, second.extraShot);
+}
+
+Drink& Drink::operator=(const Drink& other) {
+    Drink temp(other);
+    swap(*this, temp);
+    return *this;
 }
 
 [[nodiscard]] float Drink::FinalPrice() const {
@@ -46,6 +68,23 @@ Dessert::Dessert(const string& name, const float price, const Product_Type& type
 
 Product* Dessert::clone() const {
     return new Dessert(*this);
+}
+
+void swap(Dessert& first, Dessert& second) noexcept {
+    using std::swap;
+    swap(static_cast<Product&>(first), second);
+    swap(first.hasGluten, second.hasGluten);
+    swap(first.hasLactose, second.hasLactose);
+    swap(first.isVegan, second.isVegan);
+    swap(first.allergens, second.allergens);
+    swap(first.isFrozen, second.isFrozen);
+    swap(first.toppings, second.toppings);
+}
+
+Dessert& Dessert::operator=(const Dessert& other) {
+    Dessert temp(other);
+    swap(*this, temp);
+    return *this;
 }
 
 void Dessert::DisplayAllAllergens() const {
@@ -79,6 +118,22 @@ Sandwich::Sandwich(const string& name, const float price, const Product_Type& ty
 
 Product* Sandwich::clone() const {
     return new Sandwich(*this);
+}
+
+void swap(Sandwich& first, Sandwich& second) noexcept {
+    using std::swap;
+    swap(static_cast<Product&>(first), second);
+    swap(first.ingredients, second.ingredients);
+    swap(first.isVegan, second.isVegan);
+    swap(first.allergens, second.allergens);
+    swap(first.isFrozen, second.isFrozen);
+    swap(first.extraIngredients, second.extraIngredients);
+}
+
+Sandwich& Sandwich::operator=(const Sandwich& other) {
+    Sandwich temp(other);
+    swap(*this, temp);
+    return *this;
 }
 
 void Sandwich::DisplayAllAllergens() const {
