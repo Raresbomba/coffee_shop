@@ -1,6 +1,6 @@
-# Nu primesc notă pentru că nu am pus titlu și descriere
+# Coffee Shop
 
-### Folosiți template-ul corespunzător grupei voastre!
+### O aplicatie ce gestioneaza o cafenea. Aplicatia ofera benificii pentru clientul cafenelei, precum optiunea de a vedea meniul, de a face o comanda, de a aduna puncte de fidelitate pentru fiecare comanda si de a beneficia de acestea pentru reduceri la viitoarele comenzi. De asemenea, aplicatia ofera beneficii si pentru personal, care isi poate vedea programul in fiecare saptamana, precum si task-urile pe care le are de facut. Aplicatia are optiunea si de administrare a intregii cafenele. 
 
 | Laborant  | Link template                                |
 |-----------|----------------------------------------------|
