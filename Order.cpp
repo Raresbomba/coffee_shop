@@ -41,12 +41,12 @@ float Order::CalculateExtraShotTotal() const {
 }
 
 ostream& operator<<(ostream& os, const Order& order) {
-    os << "Id Comanda: " << order.id << endl;
-    os << "Produse: " << endl;
+    os << "Order ID: " << order.id << endl;
+    os << "Products: " << endl;
     for (const auto& productPtr : order.products) {
         os << productPtr->getProductName() << ' ' << productPtr->FinalPrice() << endl;
     }
-    os << "Total: " << order.price << endl;
-    os << "Comanda plasata la " << order.date;
+    os << "Price: " << order.price << endl;
+    os << "Order date: " << order.date;
     return os;
 }

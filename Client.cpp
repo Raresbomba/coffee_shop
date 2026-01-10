@@ -9,8 +9,8 @@ Client::Client(const string& name, const int id) {
 }
 
 ostream& operator<<(ostream& os, const Client& client) {
-    os << "Id Client: " << client.id << endl;
-    os << "Nume Client: " << client.name << endl;
-    os << "Puncte de fidelitate: " << client.points << endl;
+    os << "Client ID: " << client.id << endl;
+    os << "Name: " << client.name << endl;
+    os << "Fidelity Points: " << client.points << endl;
     return os;
 }

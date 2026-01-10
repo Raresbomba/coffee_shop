@@ -52,12 +52,11 @@ class Product {
     [[nodiscard]] virtual float FinalPrice() const = 0;
 
     void DisplayDetails() {
-        cout << "--- Detalii Produs: " << this->getProductName() << " ---" << endl;
-        cout << "Nume: " << this->getProductName() << endl;
-        cout << "Pret de baza: " << this->getProductPrice() << "Ron" << endl;
+        cout << "Product Details: " << this->getProductName() << "" << endl;
+        cout << "Name: " << this->getProductName() << endl;
+        cout << "Price: " << this->getProductPrice() << "Ron" << endl;
         this->DisplaySpecifics();
-        cout << "Pret final: " << this->FinalPrice() << endl;
-        cout << "--------------------------------------" << endl;
+        cout << "Final Price: " << this->FinalPrice() << endl;
     }
 
 private:
@@ -94,19 +93,19 @@ class Drink final : public Product {
 
 private:
     void DisplaySpecifics() override {
-        cout << "Tip: Bautura" << endl;
-        cout << "Dimensiune: " << this->size << endl;
-        cout << "Lapte: " << this->milkType << endl;
-        cout << "Decafeinizata: ";
+        cout << "Type: Drink" << endl;
+        cout << "Size: " << this->size << endl;
+        cout << "Milk Type: " << this->milkType << endl;
+        cout << "Decaf: ";
         if (this->decaf) {
-            cout << "Da" << endl;
+            cout << "Yes" << endl;
         }
-        else cout << "Nu" << endl;
+        else cout << "No" << endl;
         cout << "Extra Shot: ";
         if (this->extraShot) {
-            cout << "Da" <<endl;
+            cout << "Yes" <<endl;
         }
-        else cout << "Nu" << endl;
+        else cout << "No" << endl;
     }
 
 };
@@ -145,25 +144,25 @@ class Dessert final : public Product {
     private:
 
     void DisplaySpecifics() override {
-        cout << "Tip: Desert" << endl;
+        cout << "Type: Dessert" << endl;
         cout << "Gluten: ";
-        if (this->hasGluten) cout << "Da" << endl;
-        else cout << "Nu" << endl;
-        cout << "Lactoza: ";
-        if (this->hasLactose) cout << "Da" << endl;
-        else cout << "Nu" << endl;
+        if (this->hasGluten) cout << "Yes" << endl;
+        else cout << "No" << endl;
+        cout << "Lactose: ";
+        if (this->hasLactose) cout << "Yes" << endl;
+        else cout << "No" << endl;
         cout << "Vegan: ";
-        if (this->isVegan) cout << "Da" << endl;
-        else cout << "Nu" << endl;
-        cout << "Alergeni: ";
+        if (this->isVegan) cout << "Yes" << endl;
+        else cout << "No" << endl;
+        cout << "Allergens: ";
         for (string& allergen : allergens) {
             cout << allergen << " ";
         }
         cout << endl;
-        cout << "Congelat: ";
-        if (this->isFrozen) cout << "Da" << endl;
-        else cout << "Nu" << endl;
-        cout << "Topping-uri: ";
+        cout << "Frozen: ";
+        if (this->isFrozen) cout << "Yes" << endl;
+        else cout << "No" << endl;
+        cout << "Toppings: ";
         for (string& topping : toppings) {
             cout << topping << " ";
         }
@@ -207,24 +206,24 @@ class Sandwich final : public Product {
 
     private:
     void DisplaySpecifics() override {
-        cout << "Tip: Sandwich" << endl;
-        cout << "Ingrediente: ";
+        cout << "Type: Sandwich" << endl;
+        cout << "Ingredients: ";
         for (string& ingredient : ingredients) {
             cout << ingredient << " ";
         }
         cout << endl;
         cout << "Vegan: ";
-        if (this->isVegan) cout << "Da" << endl;
-        else cout << "Nu" << endl;
-        cout << "Alergeni: ";
+        if (this->isVegan) cout << "Yes" << endl;
+        else cout << "No" << endl;
+        cout << "Allergens: ";
         for (string& allergen : allergens) {
             cout << allergen << " ";
         }
         cout << endl;
-        cout << "Congelat: ";
-        if (this->isFrozen) cout << "Da" << endl;
-        else cout << "Nu" << endl;
-        cout << "Ingrediente extra: ";
+        cout << "Frozen: ";
+        if (this->isFrozen) cout << "yes" << endl;
+        else cout << "No" << endl;
+        cout << "Extra Ingredients: ";
         for (string& ingredient : extraIngredients) {
             cout << ingredient << " ";
         }
@@ -256,15 +255,15 @@ class CoffeeBeans final : public Product {
 
 private:
     void DisplaySpecifics() override {
-        cout << "Tip: Cafea Boabe" << endl;
-        cout << "Marime: " << this->size << endl;
-        cout << "Gradul de prajire: " << this->roastType << endl;
-        cout << "Origini: ";
+        cout << "Type: Coffee Beans" << endl;
+        cout << "Size: " << this->size << endl;
+        cout << "Roast Level: " << this->roastType << endl;
+        cout << "Origins: ";
         for (string& origin : origins) {
             cout << origin << ", ";
         }
         cout << endl;
-        cout << "Note: ";
+        cout << "Blend: ";
         for (string& bl : blend) {
             cout << bl << ", ";
         }

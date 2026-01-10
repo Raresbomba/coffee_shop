@@ -21,17 +21,17 @@ class CoffeeShopException : public exception {
 
 class InvalidInputException final : public CoffeeShopException {
     public:
-    explicit InvalidInputException(const string& msg) : CoffeeShopException("EROARE VALIDARE: " + msg) {}
+    explicit InvalidInputException(const string& msg) : CoffeeShopException("VALIDATION ERROR: " + msg) {}
 };
 
 class StockException final : public CoffeeShopException {
     public:
-    explicit StockException(const string& msg) : CoffeeShopException("EROARE STOC" + msg) {}
+    explicit StockException(const string& msg) : CoffeeShopException("STOCK ERROR" + msg) {}
 };
 
 class AccesException final : public CoffeeShopException {
     public:
-    explicit AccesException(const string& msg) : CoffeeShopException("EROARE ACCESS" + msg) {}
+    explicit AccesException(const string& msg) : CoffeeShopException("ACCESS ERROR" + msg) {}
 };
 
 

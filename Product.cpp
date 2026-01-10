@@ -5,8 +5,8 @@
 #include <algorithm>
 
 Product::Product(string  name, const float price, const Product_Type& type) : name(std::move(name)), price(price), type(type) {
-    if (this->name.empty()) throw InvalidInputException("Nu a fost specificat numele produsului");
-    if (this->price <= 0) throw InvalidInputException("Pretul produsului nu poate fi negativ");
+    if (this->name.empty()) throw InvalidInputException("Product has no name");
+    if (this->price <= 0) throw InvalidInputException("Negative product price");
 }
 
 Product::Product(const Product& product) {
@@ -51,9 +51,9 @@ Drink& Drink::operator=(const Drink& other) {
 
 [[nodiscard]] float Drink::FinalPrice() const {
     float price = this->getProductPrice();
-    if (this->size == "Mediu") price+=3;
-    else if (this->size == "Mare") price+=6;
-    if (this->milkType != "Normal" && this-> milkType != "None") {
+    if (this->size == "Medium") price+=3;
+    else if (this->size == "Big") price+=6;
+    if (this->milkType != "Whole" && this-> milkType != "None") {
         price+=3;
     }
     if (this->decaf == true) {
@@ -92,12 +92,12 @@ Dessert& Dessert::operator=(const Dessert& other) {
 }
 
 void Dessert::DisplayAllAllergens() const {
-    cout<<"Lista de alergeni: ";
+    cout<<"List of Allergens: ";
     if (hasGluten) {
         cout<<"Gluten, ";
     }
     if (hasLactose) {
-        cout<<"Lactoza, ";
+        cout<<"Lactose, ";
     }
     for (const string& allergen : allergens) {
         cout<<allergen<<", ";
@@ -141,7 +141,7 @@ Sandwich& Sandwich::operator=(const Sandwich& other) {
 }
 
 void Sandwich::DisplayAllAllergens() const {
-    cout<<"Lista de alergeni: ";
+    cout<<"List of Allergens: ";
     for (const string& allergen : allergens) {
         cout<<allergen<<", ";
     }
