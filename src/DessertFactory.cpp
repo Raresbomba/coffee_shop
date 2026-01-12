@@ -104,7 +104,7 @@ std::unique_ptr<Product> DessertFactory::createProduct(const std::string& name) 
         else {
             throw InvalidInputException("Invalid Input: Vegan must be y/n");
         }
-        return std::make_unique<Dessert>(name, 15, dessert, glu, lac, veg,
+        return std::make_unique<Dessert>(name, 8, dessert, glu, lac, veg,
                 std::vector<std::string>{"Lactose", "Gluten"}, false, std::vector<std::string>{"None"});
     }
     throw InvalidInputException("Invalid Input: Product does not exist in the menu");

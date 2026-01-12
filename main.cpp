@@ -1,15 +1,18 @@
 #include <iostream>
 #include <vector>
 #include "headers/Product.hpp"
-#include "headers/Client.hpp"
-#include "headers/Order.hpp"
 #include "headers/Exceptions.hpp"
 #include "headers/DrinkFactory.hpp"
 #include "headers/DessertFactory.hpp"
+#include "headers/Menu.hpp"
 
 using namespace std;
 
 int main() {
+
+    Menu::showDrinks();
+    Menu::showDesserts();
+
     try {
         DrinkFactory drinkFactory;
         DessertFactory dessertFactory;

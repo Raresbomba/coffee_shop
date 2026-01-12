@@ -142,10 +142,10 @@ std::unique_ptr<Product> DrinkFactory::createProduct(const std::string& name){
             throw InvalidInputException("Invalid Input!: Milk Type does not exist");
         }
         if (decaf == "y") {
-            return std::make_unique<Drink>(name, 13, drink, "60ml", milkType, 1, 0);
+            return std::make_unique<Drink>(name, 15, drink, "100ml", milkType, 1, 0);
         }
         if (decaf == "n") {
-            return std::make_unique<Drink>(name, 13, drink, "60ml", milkType, 0, 0);
+            return std::make_unique<Drink>(name, 15, drink, "100ml", milkType, 0, 0);
         }
         throw InvalidInputException("Invalid Input!: Decaf must be y/n");
     }
