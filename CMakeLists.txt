@@ -59,6 +59,10 @@ add_executable(${MAIN_EXECUTABLE_NAME}
         headers/Exceptions.hpp
         src/DrinkFactory.cpp
         headers/DrinkFactory.hpp
+        src/ProductFactory.cpp
+        headers/ProductFactory.hpp
+        src/DessertFactory.cpp
+        headers/DessertFactory.hpp
 )
 
 # NOTE: Add all defined targets (e.g. executables, libraries, etc. )

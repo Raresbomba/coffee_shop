@@ -2,11 +2,11 @@
 #define OOP_FACTORY_HPP
 #include <memory>
 #include "Product.hpp"
+#include "ProductFactory.hpp"
 
-
-class Factory {
+class DrinkFactory final : public ProductFactory {
 public:
-    static std::unique_ptr<Product> createProduct(const std::string& name);
+     std::unique_ptr<Product> createProduct(const std::string& name) override;
 };
 
 #endif //OOP_FACTORY_HPP

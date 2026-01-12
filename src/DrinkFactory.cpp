@@ -1,7 +1,7 @@
 #include "../headers/DrinkFactory.hpp"
 #include "../headers/Exceptions.hpp"
 
-std::unique_ptr<Product> createDrink(const std::string& name){
+std::unique_ptr<Product> createProduct(const std::string& name){
 
     if (name == "Espresso") {
         std::string decaf;
