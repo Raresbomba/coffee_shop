@@ -1,7 +1,7 @@
 #include "../headers/DessertFactory.hpp"
 #include "../headers/Exceptions.hpp"
 
-std::unique_ptr<Product> createProduct(const std::string& name) {
+std::unique_ptr<Product> DessertFactory::createProduct(const std::string& name) {
     if (name == "Cinnamon Roll") {
         return std::make_unique<Dessert>(name, 7, dessert, true, true, false,
         std::vector<std::string>{"Lactose", "Gluten", "Nuts"}, true, std::vector<std::string>{"None"});
@@ -32,7 +32,7 @@ std::unique_ptr<Product> createProduct(const std::string& name) {
         if (topping == "y") {
             toppings.emplace_back("Cream");
         }
-        if (topping != "n") {
+        else if (topping != "n") {
             throw InvalidInputException("Invalid Input: Cream must be y/n");
         }
         cout << "Chocolate?(y/n):";
@@ -40,7 +40,7 @@ std::unique_ptr<Product> createProduct(const std::string& name) {
         if (topping == "y") {
             toppings.emplace_back("Chocolate");
         }
-        if (topping != "n") {
+        else if (topping != "n") {
             throw InvalidInputException("Invalid Input: Chocolate must be y/n");
         }
         cout << "Bananas?(y/n):";
@@ -48,7 +48,7 @@ std::unique_ptr<Product> createProduct(const std::string& name) {
         if (topping == "y") {
             toppings.emplace_back("Bananas");
         }
-        if (topping != "n") {
+        else if (topping != "n") {
             throw InvalidInputException("Invalid Input: Bananas must be y/n");
         }
         cout << "Strawberries?(y/n):";
@@ -56,7 +56,7 @@ std::unique_ptr<Product> createProduct(const std::string& name) {
         if (topping == "y") {
             toppings.emplace_back("Strawberries");
         }
-        if (topping != "n") {
+        else if (topping != "n") {
             throw InvalidInputException("Invalid Input: Strawberries must be y/n");
         }
         if (toppings.empty()) {

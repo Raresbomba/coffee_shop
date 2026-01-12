@@ -49,10 +49,8 @@ Drink& Drink::operator=(const Drink& other) {
     return *this;
 }
 
-[[nodiscard]] float Drink::FinalPrice() const {
+float Drink::FinalPrice() const {
     float price = this->getProductPrice();
-    if (this->size == "Medium") price+=3;
-    else if (this->size == "Big") price+=6;
     if (this->milkType != "Whole" && this-> milkType != "None") {
         price+=3;
     }
