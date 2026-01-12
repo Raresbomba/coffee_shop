@@ -1,9 +1,9 @@
 #include <iostream>
 #include <vector>
-#include "Product.hpp"
-#include "Client.hpp"
-#include "Order.hpp"
-#include "Exceptions.hpp"
+#include "headers/Product.hpp"
+#include "headers/Client.hpp"
+#include "headers/Order.hpp"
+#include "headers/Exceptions.hpp"
 
 using namespace std;
 

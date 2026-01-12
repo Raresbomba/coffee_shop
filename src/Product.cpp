@@ -1,5 +1,5 @@
-#include "Product.hpp"
-#include "Exceptions.hpp"
+#include "../headers/Product.hpp"
+#include "../headers/Exceptions.hpp"
 #include <iostream>
 #include <utility>
 #include <algorithm>
